@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+<<<<<<< HEAD
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "../validations/register-validation";
@@ -56,6 +57,16 @@ const Register = () => {
       </Alert>
     </div>
   );
+=======
+import { useForm} from "react-hook-form"
+
+const Register = () => {
+  const{register,handleSubmit,formState:{errors}}=useForm();
+  const registerSubmit = (userData: unknown) => {
+    console.log('Form Submit',userData);
+  };
+
+>>>>>>> 7d75ee2b4c17ea83adf1c5c14130fa92f40e5e38
   return (
     <div>
       <Card>
@@ -66,6 +77,7 @@ const Register = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
+<<<<<<< HEAD
           {status && alertJSx}
           <form action="" onSubmit={handleSubmit(registerSubmit)}>
             <Label htmlFor="username">Username</Label>
@@ -99,6 +111,19 @@ const Register = () => {
               Submit
             </Button>
           </form>
+=======
+          <form action="" onSubmit={handleSubmit(registerSubmit)}>
+            <Label htmlFor="username">Username</Label>
+            <Input type="text" id="username" placeholder="Enter your username" {...register("username") }/>
+
+            <Label htmlFor="email">Email</Label>
+            <Input type="email" id="email" placeholder="abc@example.com" {...register("email") }/>
+            <Label htmlFor="password">Password</Label>
+            <Input type="password" id="password" placeholder="password" {...register("password") } />
+             <Button variant='outline' className="bg-indigo-300">Submit</Button>
+          </form>
+         
+>>>>>>> 7d75ee2b4c17ea83adf1c5c14130fa92f40e5e38
         </CardContent>
       </Card>
     </div>

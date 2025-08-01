@@ -5,3 +5,6 @@ axios.defaults.baseURL = API_BASE_URL;
 export const doRegister = (userData:unknown)=>{
      return axios.post('register',{data:userData});//promise return karega
 }
+export const doLogin = (userData:unknown)=>{
+     return axios.post('login',{data:userData});//promise return karega
+}

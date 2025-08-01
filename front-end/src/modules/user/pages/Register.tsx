@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-<<<<<<< HEAD
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "../validations/register-validation";
@@ -19,6 +18,7 @@ import { useState } from "react";
 const Register = () => {
   const [status, setStatus] = useState(false);
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -31,99 +31,96 @@ const Register = () => {
       password: "",
     },
   });
+
   const registerSubmit = async (userData: unknown) => {
-    console.log("Form Submit", userData);
     try {
       const result = await doRegister(userData);
-      if (result.data.id) {
+      console.log(userData);
+      console.log(result);
+      if (result.data.message) {
         setStatus(false);
         navigate("/login");
       } else {
         setStatus(true);
         console.log("unable to register");
       }
-      console.log("Result", result);
     } catch (error) {
       console.log("register error", error);
     }
   };
+
   const alertJSx = (
-    <div>
-      <Alert variant="destructive">
-        <AlertTitle>Heads up!</AlertTitle>
-        <AlertDescription>
-          You can add components and dependencies to your app using the cli.
-        </AlertDescription>
-      </Alert>
-    </div>
+    <Alert variant="destructive" className="mb-4">
+      <AlertTitle>Error</AlertTitle>
+      <AlertDescription>Registration failed. Try again.</AlertDescription>
+    </Alert>
   );
-=======
-import { useForm} from "react-hook-form"
 
-const Register = () => {
-  const{register,handleSubmit,formState:{errors}}=useForm();
-  const registerSubmit = (userData: unknown) => {
-    console.log('Form Submit',userData);
-  };
-
->>>>>>> 7d75ee2b4c17ea83adf1c5c14130fa92f40e5e38
   return (
-    <div>
-      <Card>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <Card className="w-full max-w-md shadow-md border border-gray-200">
         <CardHeader>
-          <CardTitle className="text-center">Register</CardTitle>
+          <CardTitle className="text-center text-2xl font-semibold">Register</CardTitle>
           <CardDescription className="text-center">
-            Music App Registration From
+            Music App Registration Form
           </CardDescription>
         </CardHeader>
         <CardContent>
-<<<<<<< HEAD
           {status && alertJSx}
-          <form action="" onSubmit={handleSubmit(registerSubmit)}>
-            <Label htmlFor="username">Username</Label>
-            <Input
-              type="text"
-              id="username"
-              placeholder="Enter your username"
-              {...register("username")}
-            />
-            <span className="text-red-500">
-              {errors.username && errors.username.message}
-            </span>
+          <form onSubmit={handleSubmit(registerSubmit)} className="space-y-5">
+            {/* Username */}
+            <div>
+              <Label htmlFor="username">Username</Label>
+              <Input
+                type="text"
+                id="username"
+                placeholder="Enter your username"
+                {...register("username")}
+              />
+              {errors.username && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.username.message}
+                </p>
+              )}
+            </div>
 
-            <Label htmlFor="email">Email</Label>
-            <Input
-              type="email"
-              id="email"
-              placeholder="abc@example.com"
-              {...register("email")}
-            />
-            <span>{errors.email && errors.email.message}</span>
-            <Label htmlFor="password">Password</Label>
-            <Input
-              type="password"
-              id="password"
-              placeholder="password"
-              {...register("password")}
-            />
-            <span>{errors.password && errors.password.message}</span>
-            <Button variant="outline" className="bg-indigo-300">
-              Submit
+            {/* Email */}
+            <div>
+              <Label htmlFor="email">Email</Label>
+              <Input
+                type="email"
+                id="email"
+                placeholder="abc@example.com"
+                {...register("email")}
+              />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.email.message}
+                </p>
+              )}
+            </div>
+
+            {/* Password */}
+            <div>
+              <Label htmlFor="password">Password</Label>
+              <Input
+                type="password"
+                id="password"
+                placeholder="Enter password"
+                {...register("password")}
+              />
+              {errors.password && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.password.message}
+                </p>
+              )}
+            </div>
+
+            {/* Submit Button */}
+            <Button type="submit" className="w-full bg-indigo-500 hover:bg-indigo-600 text-white">
+              Register
             </Button>
           </form>
-=======
-          <form action="" onSubmit={handleSubmit(registerSubmit)}>
-            <Label htmlFor="username">Username</Label>
-            <Input type="text" id="username" placeholder="Enter your username" {...register("username") }/>
-
-            <Label htmlFor="email">Email</Label>
-            <Input type="email" id="email" placeholder="abc@example.com" {...register("email") }/>
-            <Label htmlFor="password">Password</Label>
-            <Input type="password" id="password" placeholder="password" {...register("password") } />
-             <Button variant='outline' className="bg-indigo-300">Submit</Button>
-          </form>
-         
->>>>>>> 7d75ee2b4c17ea83adf1c5c14130fa92f40e5e38
         </CardContent>
       </Card>
     </div>

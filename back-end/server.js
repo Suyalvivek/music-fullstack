@@ -1,21 +1,15 @@
 import chalk from "chalk";
 import express from "express";
-import userRoutes from "./api/v1/routes/user-routes.js";
-import musicRoutes from "./api/v1/routes/music-routes.js";
 import { indexRoute } from "./api/v1/routes/index.js";
+import { Error404 } from "./utils/middlewares/404.js";
+import cors from "cors"
 const app = express();
-// app.use('/api/v1/user', userRoutes);
-// app.use('/api/v1/music', musicRoutes);
+app.use(cors());
+app.use(express.json());
 app.use('/api/v1/', indexRoute);
-app.use((req,res,next)=>{
-    res.status(404).json({
-        success: false,
-        message: "Route not found"
-    });
-})
-// app.get("/", (req, res) => {
-//     res.send("Hello World");
-// })
+
+app.use(Error404);
+
 const server = app.listen(7777,(err)=>{
     if(err){
         console.log(chalk.redBright.bold("Error in starting server", err));

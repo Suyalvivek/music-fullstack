@@ -1,3 +1,4 @@
+import Footer from "./shared/Footer";
 import Header from "./shared/Header"
 import AppRoutes from "./shared/routes/AppRoutes"
 
@@ -6,6 +7,8 @@ const App = () => {
     <div>
       <Header></Header>
       <AppRoutes></AppRoutes>
+      <Footer></Footer>
+
     </div>
   )
 }

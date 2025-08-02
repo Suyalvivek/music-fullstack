@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { registerSchema } from "../validations/register-validation";
+import { registerSchema } from "../validations/register-validation.ts"; 
 import { doRegister } from "../api/user-api";
 import { useNavigate } from "react-router-dom";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";

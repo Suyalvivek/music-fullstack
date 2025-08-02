@@ -3,6 +3,9 @@ export const login = (req, res) => {
 };
 
 export const register = (req, res) => {
+    console.log('User data',req.body);
+    const userObject = req.body;
+
     res.json({message:"User Register"});
 };
 

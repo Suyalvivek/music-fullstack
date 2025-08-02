@@ -1,10 +1,9 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema } from "../validations/login-validation.ts"; // You should create this schema
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { doLogin } from "../api/user-api"; // Assume this hits your login endpoint
-
+import { loginSchema } from "../validations/login-validation.ts";
 import { Button } from "@/components/ui/button";
 import {
   Card,

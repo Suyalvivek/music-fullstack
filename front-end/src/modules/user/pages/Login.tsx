@@ -17,6 +17,7 @@ import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const Login = () => {
+  const [message, setMessage] = useState("");
   const [status, setStatus] = useState(false);
   const navigate = useNavigate();
 
@@ -32,13 +33,17 @@ const Login = () => {
     },
   });
 
-  const loginSubmit = async (userData: unknown) => {
+  const loginSubmit = async (userObject: unknown) => {
     try {
-      const result = await doLogin(userData);
+      const result = await doLogin(userObject);
       if (result.data.message) {
+        console.log("Login Success");
+        setMessage(result.data.message);
         setStatus(false);
         navigate("/dashboard");
       } else {
+        console.log("Login Failed");
+        setMessage(result.data.message);
         setStatus(true);
       }
     } catch (error) {
@@ -46,24 +51,32 @@ const Login = () => {
       console.error("Login error", error);
     }
   };
-
+  const alertJsx = (
+    <Alert variant="destructive" className="mb-4">
+      <AlertTitle></AlertTitle>
+      <AlertDescription>{message}</AlertDescription>
+    </Alert>
+  );
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
       <Card className="w-full max-w-md shadow-md border border-gray-200">
         <CardHeader>
-          <CardTitle className="text-center text-2xl font-semibold">Login</CardTitle>
+          <CardTitle className="text-center text-2xl font-semibold">
+            Login
+          </CardTitle>
           <CardDescription className="text-center">
             Access your Music App account
           </CardDescription>
         </CardHeader>
         <CardContent>
-          {status && (
+          {/* {status && (
             <Alert variant="destructive" className="mb-4">
               <AlertTitle>Login Failed</AlertTitle>
               <AlertDescription>Invalid email or password.</AlertDescription>
             </Alert>
-          )}
+          )} */}
           <form onSubmit={handleSubmit(loginSubmit)} className="space-y-5">
+            {alertJsx}
             {/* Email */}
             <div>
               <Label htmlFor="email">Email</Label>
@@ -73,11 +86,10 @@ const Login = () => {
                 placeholder="abc@example.com"
                 {...register("email")}
               />
-              {errors.email && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.email.message}
-                </p>
-              )}
+              <span className="text-red-500 text-sm mt-1">
+                {" "}
+                {errors.email && errors.email.message}
+              </span>
             </div>
 
             {/* Password */}
@@ -89,11 +101,10 @@ const Login = () => {
                 placeholder="Enter your password"
                 {...register("password")}
               />
-              {errors.password && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.password.message}
-                </p>
-              )}
+              <span className="text-red-500 text-sm mt-1">
+                {" "}
+                {errors.password && errors.password.message}
+              </span>
             </div>
 
             {/* Submit */}

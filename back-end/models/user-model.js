@@ -1,5 +1,9 @@
-import { Schema } from "mongoose";
+import { Schema, mongoose } from "mongoose";
 const userSchema = new Schema({
+    'username':{
+        type:String,
+        required:true
+    },
     'email':{
         type:String,
         required:true,
@@ -11,10 +15,7 @@ const userSchema = new Schema({
         minlength:8,
         required:true
     },
-    'name':{
-        type:String,
-        required:true
-    },
+    
     'status':{
         type:String,
         default:'A'
@@ -26,4 +27,4 @@ const userSchema = new Schema({
     }
 
 });
-export const userModel = mongoose.model('users',userSchema);
+export const UserModel = mongoose.model('users',userSchema);

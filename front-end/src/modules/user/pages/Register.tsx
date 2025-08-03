@@ -17,8 +17,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useState } from "react";
 const Register = () => {
   const [status, setStatus] = useState(false);
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
-
   const {
     register,
     handleSubmit,
@@ -42,17 +42,20 @@ const Register = () => {
         navigate("/login");
       } else {
         setStatus(true);
+        setMessage('Unable to register');
         console.log("unable to register");
       }
     } catch (error) {
+      setStatus(true);
+      setMessage(error.response.data.message);
       console.log("register error", error);
     }
   };
 
   const alertJSx = (
     <Alert variant="destructive" className="mb-4">
-      <AlertTitle>Error</AlertTitle>
-      <AlertDescription>Registration failed. Try again.</AlertDescription>
+      <AlertTitle></AlertTitle>
+      <AlertDescription>{message}</AlertDescription>
     </Alert>
   );
 

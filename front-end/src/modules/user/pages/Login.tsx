@@ -37,6 +37,8 @@ const Login = () => {
     try {
       const result = await doLogin(userObject);
       if (result.data.message) {
+        localStorage.role = result.data.role;
+        localStorage.token = result.data.token;
         console.log("Login Success");
         setMessage(result.data.message);
         setStatus(false);
@@ -46,9 +48,10 @@ const Login = () => {
         setMessage(result.data.message);
         setStatus(true);
       }
-    } catch (error) {
+    } catch (error: any) {
       setStatus(true);
       console.error("Login error", error);
+      setMessage(error.response.data.message);
     }
   };
   const alertJsx = (

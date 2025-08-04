@@ -7,5 +7,6 @@ export const doRegister = (userData:unknown)=>{
      return axios.post('register',userData);//promise return karega
 }
 export const doLogin = (userData:unknown)=>{
-     return axios.post('login',{data:userData});//promise return karega
+     console.log('Login API',userData);
+     return axios.post('login',userData);//promise return karega
 }

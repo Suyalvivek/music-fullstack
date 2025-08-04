@@ -3,8 +3,8 @@ import { login as loginUser } from "../services/user-service.js";
 export const login = async (req, res) => {
     const userObject = req.body;
     try {
-    const message = await loginUser(userObject);
-    res.status(200).json({message:message});
+    const obj = await loginUser(userObject);
+    res.status(200).json(obj);
     } catch (error) {
         res.status(500).json({message:"Error During Login,Server Error"});       
         console.log(error); 

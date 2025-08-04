@@ -15,6 +15,10 @@ const userSchema = new Schema({
         minlength:8,
         required:true
     },
+    'role':{
+        type:String,
+        default:'user'
+    },
     
     'status':{
         type:String,

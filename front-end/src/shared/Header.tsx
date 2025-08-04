@@ -9,12 +9,22 @@ const Header = () => {
           <Link to="/" className="hover:text-pink-400 transition">
             Home
           </Link>
-          <Link to="/Login" className="hover:text-pink-400 transition">
+          <Link to="/login" className="hover:text-pink-400 transition">
             Login
           </Link>
-          <Link to="/Register" className="hover:text-pink-400 transition">
+          <Link to="/register" className="hover:text-pink-400 transition">
             Register
           </Link>
+          {localStorage.token && localStorage.role == "admin" && (
+            <Link to="/add-song" className="hover:text-pink-400 transition">
+              Upload Song
+            </Link>
+          )}
+          {localStorage.token && (
+            <Link to="/lib" className="hover:text-pink-400 transition">
+              My Library
+            </Link>
+          )}
         </nav>
       </div>
     </header>

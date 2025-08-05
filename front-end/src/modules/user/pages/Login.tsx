@@ -61,13 +61,13 @@ const Login = () => {
     </Alert>
   );
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <Card className="w-full max-w-md shadow-md border border-gray-200">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-gray-800 p-4">
+      <Card className="w-full max-w-md px-4 py-6 backdrop-blur-md bg-white/10 border border-white/20 shadow-lg">
         <CardHeader>
-          <CardTitle className="text-center text-2xl font-semibold">
+          <CardTitle className="text-center text-4xl font-extrabold text-white mb-1 tracking-wide">
             Login
           </CardTitle>
-          <CardDescription className="text-center">
+          <CardDescription className="text-center text-gray-300">
             Access your Music App account
           </CardDescription>
         </CardHeader>
@@ -78,18 +78,19 @@ const Login = () => {
               <AlertDescription>Invalid email or password.</AlertDescription>
             </Alert>
           )} */}
-          <form onSubmit={handleSubmit(loginSubmit)} className="space-y-5">
+          <form onSubmit={handleSubmit(loginSubmit)} className="space-y-6 px-1 md:px-2">
             {alertJsx}
             {/* Email */}
             <div>
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className="text-gray-300 mb-1 block text-sm font-medium">Email</Label>
               <Input
                 type="email"
                 id="email"
                 placeholder="abc@example.com"
                 {...register("email")}
+                className="bg-gray-800 text-white border border-gray-600 placeholder-gray-400 px-4 py-2 rounded-md w-full"
               />
-              <span className="text-red-500 text-sm mt-1">
+              <span className="text-red-400 text-xs mt-1 block">
                 {" "}
                 {errors.email && errors.email.message}
               </span>
@@ -97,14 +98,15 @@ const Login = () => {
 
             {/* Password */}
             <div>
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password" className="text-gray-300 mb-1 block text-sm font-medium">Password</Label>
               <Input
                 type="password"
                 id="password"
                 placeholder="Enter your password"
                 {...register("password")}
+                className="bg-gray-800 text-white border border-gray-600 placeholder-gray-400 px-4 py-2 rounded-md w-full"
               />
-              <span className="text-red-500 text-sm mt-1">
+              <span className="text-red-400 text-xs mt-1 block">
                 {" "}
                 {errors.password && errors.password.message}
               </span>
@@ -113,7 +115,7 @@ const Login = () => {
             {/* Submit */}
             <Button
               type="submit"
-              className="w-full bg-indigo-500 hover:bg-indigo-600 text-white"
+              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold tracking-wide"
             >
               Login
             </Button>

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-export const Song = ({song})=>{
+const Song = ({song})=>{
     const handleAddToPlaylist = ()=>{
         console.log('Added in PlayList');
     }
@@ -38,3 +38,4 @@ export const Song = ({song})=>{
     </Card>
     </>)
 }
+export default Song;

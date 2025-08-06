@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { doLogin } from "../api/user-api"; // Assume this hits your login endpoint
 import { loginSchema } from "../validations/login-validation.ts";
+import { useUserStore } from "../store/user-store";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -33,12 +34,14 @@ const Login = () => {
     },
   });
 
+  const { login } = useUserStore();
+
   const loginSubmit = async (userObject: unknown) => {
     try {
       const result = await doLogin(userObject);
       if (result.data.message) {
-        localStorage.role = result.data.role;
-        localStorage.token = result.data.token;
+        // Use the store's login function instead of directly setting localStorage
+        login(result.data.role, result.data.token);
         console.log("Login Success");
         setMessage(result.data.message);
         setStatus(false);

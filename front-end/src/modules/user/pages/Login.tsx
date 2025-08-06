@@ -42,19 +42,17 @@ const Login = () => {
       if (result.data.message) {
         // Use the store's login function instead of directly setting localStorage
         login(result.data.role, result.data.token);
-        console.log("Login Success");
         setMessage(result.data.message);
         setStatus(false);
-        navigate("/dashboard");
+        // Redirect to home page after successful login
+        navigate("/home");
       } else {
-        console.log("Login Failed");
         setMessage(result.data.message);
         setStatus(true);
       }
     } catch (error: any) {
       setStatus(true);
-      console.error("Login error", error);
-      setMessage(error.response.data.message);
+      setMessage(error.response?.data?.message || 'Login failed. Please try again.');
     }
   };
   const alertJsx = (

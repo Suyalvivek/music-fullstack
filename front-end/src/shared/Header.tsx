@@ -14,6 +14,7 @@ const Header = () => {
 
   const handleLogout = () => {
     logout();
+    // Navigate to the landing page after logout
     navigate("/");
   };
 
@@ -36,10 +37,6 @@ const Header = () => {
             isMenuOpen ? "flex" : "hidden"
           } sm:flex flex-col sm:flex-row gap-4 sm:gap-6 items-center text-sm font-medium justify-center sm:justify-end w-full sm:w-auto mt-4 sm:mt-0`}
         >
-          <Link to="/home" className="hover:text-pink-400 px-3 py-1 rounded transition">
-            Home
-          </Link>
-          
           {!user.isLoggedIn ? (
             <>
               <Link to="/login" className="hover:text-pink-400 px-3 py-1 rounded transition">
@@ -59,6 +56,11 @@ const Header = () => {
               <Link to="/lib" className="hover:text-pink-400 px-3 py-1 rounded transition">
                 MyLibrary
               </Link>
+
+          <Link to="/home" className="hover:text-pink-400 px-3 py-1 rounded transition">
+            Home
+          </Link>
+          
               <button 
                 onClick={handleLogout}
                 className="hover:text-pink-400 px-3 py-1 rounded transition text-sm font-medium"

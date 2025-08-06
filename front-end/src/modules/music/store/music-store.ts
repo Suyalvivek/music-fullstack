@@ -4,7 +4,7 @@ type Song={
     title:string,
     desc:string,
     image:string,
-    audio:string
+    audiourl:string
 }
 type SongStore={
     songs:Song[];
@@ -15,7 +15,6 @@ export const useMusic=create<SongStore>()((set)=>({
     songs:[],
     loadSong:async()=>{
         const response = await getAllSongs()
-        console.log(response);
         set((state)=>({songs:response.data.songs})); //set the songs in the store
     }
 }))

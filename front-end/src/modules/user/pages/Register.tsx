@@ -35,20 +35,16 @@ const Register = () => {
   const registerSubmit = async (userData: unknown) => {
     try {
       const result = await doRegister(userData);
-      console.log(userData);
-      console.log(result);
       if (result.data.message) {
         setStatus(false);
         navigate("/login");
       } else {
         setStatus(true);
         setMessage('Unable to register');
-        console.log("unable to register");
       }
     } catch (error: any) {
       setStatus(true);
       setMessage(error.response.data.message);
-      console.log("register error", error);
     }
   };
 

@@ -1,4 +1,5 @@
 import { SongModel } from "../models/song-model.js";
+import logger from "../utils/logger.js";
 
 export const addNewSong = async (songObject) => {
   try {
@@ -15,14 +16,14 @@ export const getAllSongs = async () => {
   try {
     const docs = await SongModel.find().exec();
     
-    console.log(docs);
+    logger.debug('Retrieved songs from database', { count: docs.length });
     if (docs) {
       return {songs: docs};
     } else {
       return null;
     }
   } catch (error) {
-    console.log(error);
+    logger.error('Database error while fetching songs', { error: error.message });
     throw new Error("Error During Song");
   }
 };

@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useUserStore } from "../store/user-store";
 
 const HomePage = () => {
+  const { user } = useUserStore();
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 text-white flex items-center justify-center px-4 py-10">
       <motion.div
@@ -18,21 +20,36 @@ const HomePage = () => {
         </p>
 
         <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-12">
-          <Link
-            to="/login"
-            className="bg-white text-gray-900 hover:bg-gray-200 transition duration-300 px-6 py-3 rounded-lg font-semibold"
-          >
-            My Library
-          </Link>
-          <Link
-            to="/trending"
-            className="bg-indigo-600 hover:bg-indigo-700 transition duration-300 text-white px-6 py-3 rounded-lg font-semibold"
-          >
-            Explore Trending
-          </Link>
+          {!user.isLoggedIn ? (
+            <>
+              <Link
+                to="/login"
+                className="bg-white text-gray-900 hover:bg-gray-200 transition duration-300 px-6 py-3 rounded-lg font-semibold"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="bg-indigo-600 hover:bg-indigo-700 transition duration-300 text-white px-6 py-3 rounded-lg font-semibold"
+              >
+                Register
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/lib"
+                className="bg-white text-gray-900 hover:bg-gray-200 transition duration-300 px-6 py-3 rounded-lg font-semibold"
+              >
+                My Library
+              </Link>
+              
+            </>
+          )}
         </div>
 
-        {/* Optional: Visual EQ Bar */}
+
+
         <motion.div
           className="flex justify-center items-end h-16 gap-1"
           animate={{ scale: [1, 1.1, 1] }}
@@ -53,5 +70,4 @@ const HomePage = () => {
     </div>
   );
 };
-
 export default HomePage;

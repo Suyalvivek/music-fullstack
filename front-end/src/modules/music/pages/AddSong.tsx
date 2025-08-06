@@ -25,7 +25,6 @@ const AddSong = () => {
         },
       });
     const addNewSong=(songObject:any)=>{
-        console.log(songObject);
         const songFormData=new FormData();//for file
         songFormData.append('title',songObject.title);
         songFormData.append('desc',songObject.desc);
@@ -34,7 +33,7 @@ const AddSong = () => {
         if(songObject.audio && songObject.audio[0]){
             songFormData.append('audio',songObject.audio[0]);
         }
-        addNewSongApi(songObject);
+        addNewSongApi(songFormData);
     }
     const checkSize=(event:any)=>{
         const currentFile=event.target.files[0];

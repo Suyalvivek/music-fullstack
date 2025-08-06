@@ -8,7 +8,6 @@ const songSchema = new Schema({
         type:String,
         minLength:10,
         required:true,
-        unique:true
 
     },
     'image':{

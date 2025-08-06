@@ -11,3 +11,7 @@ export const addNewSong = (songData:unknown)=>{
           }
      });//promise return karega
 }
+export const getAllSongs=()=>{
+   axios.defaults.headers['Authorization'] = localStorage.token;
+  return axios.get(API_BASE_URL+'all-songs');
+}

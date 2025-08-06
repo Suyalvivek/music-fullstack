@@ -5,7 +5,8 @@ import Dashboard from "@/modules/user/pages/Dashboard"
 import AddSong from "@/modules/music/pages/AddSong"
 import MyLibrary from "@/modules/music/pages/MyLibrary"
 import HomePage from "../../modules/user/pages/HomePage"
-import Trending from "../../modules/user/pages/Trending"
+import Home from "@/modules/music/pages/Home"
+import Trending from "@/modules/user/pages/Trending"
 
 const AppRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const AppRoutes = () => {
       <Route path="/" element={<HomePage/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
+        <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/dashboard" element={<Dashboard/>}></Route>
         <Route path="/add-song" element={<AddSong/>}></Route>
         <Route path="/lib" element={<MyLibrary/>}></Route>

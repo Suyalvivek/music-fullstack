@@ -29,6 +29,9 @@ const Header = () => {
           <Link to="/register" className="hover:text-pink-400 px-3 py-1 rounded transition">
             Register
           </Link>
+          <Link to="/home" className="hover:text-pink-400 px-3 py-1 rounded transition">
+            Home
+          </Link>
           {localStorage.token && localStorage.role == "admin" && (
             <Link to="/add-song" className="hover:text-pink-400 px-3 py-1 rounded transition">
               Upload Song

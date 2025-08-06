@@ -1,13 +1,21 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { addNewSong } from "../services/song-service.js";
+import { addNewSong,getAllSongs as allSongs } from "../services/song-service.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-export const getAllSongs = (req, res) => {
-  res.json({ message: "Get All Songs" });
-};
+export const getAllSongs = async (req, res) => {
+  try {
+  const songs = await allSongs();
+  res.status(200).json(songs);
 
+  } catch (error) {
+    res.status(500).json({ message: "Error During Song,Server Error" });
+    console.log(error);
+    
+  }
+}
+  
 export const searchSongs = (req, res) => {
   res.json({ message: "Search Songs" });
 };

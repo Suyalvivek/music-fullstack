@@ -11,6 +11,11 @@ export const addNewSong = (songData:unknown)=>{
 }
 
 export const getAllSongs=()=>{
-    axios.defaults.headers['Authorization'] = localStorage.token;
-    return axios.get(API_BASE_URL+'all-songs');
+    try {
+        axios.defaults.headers['Authorization'] = localStorage.token;
+        return axios.get(API_BASE_URL+'all-songs');
+    } catch (error) {
+        console.error('Error fetching songs:', error);
+        throw error;
+    }
 }

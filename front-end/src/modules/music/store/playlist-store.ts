@@ -49,7 +49,7 @@ export const usePlaylistStore = create<PlaylistStore>((set, get) => ({
       } else {
         set({ error: response.data.message || "Failed to fetch playlists", loading: false });
       }
-    } catch (error) {
+    } catch (error: any) {
       set({ 
         error: error.response?.data?.message || "An error occurred while fetching playlists", 
         loading: false 
@@ -67,7 +67,7 @@ export const usePlaylistStore = create<PlaylistStore>((set, get) => ({
       } else {
         set({ error: response.data.message || "Failed to fetch playlist details", loading: false });
       }
-    } catch (error) {
+    } catch (error: any) {
       set({ 
         error: error.response?.data?.message || "An error occurred while fetching playlist details", 
         loading: false 
@@ -103,11 +103,11 @@ export const usePlaylistStore = create<PlaylistStore>((set, get) => ({
         set({ error: response.data.message || "Failed to add song to playlist", loading: false });
         return false;
       }
-    } catch (error) {
-      set({ 
-        error: error.response?.data?.message || "An error occurred while adding song to playlist", 
-        loading: false 
-      });
+    } catch (error: any) {
+        set({ 
+          error: error.response?.data?.message || "An error occurred while adding song to playlist", 
+          loading: false 
+        });
       return false;
     }
   },
@@ -140,11 +140,11 @@ export const usePlaylistStore = create<PlaylistStore>((set, get) => ({
         set({ error: response.data.message || "Failed to remove song from playlist", loading: false });
         return false;
       }
-    } catch (error) {
-      set({ 
-        error: error.response?.data?.message || "An error occurred while removing song from playlist", 
-        loading: false 
-      });
+    } catch (error: any) {
+        set({ 
+          error: error.response?.data?.message || "An error occurred while removing song from playlist", 
+          loading: false 
+        });
       return false;
     }
   },
@@ -167,11 +167,11 @@ export const usePlaylistStore = create<PlaylistStore>((set, get) => ({
         set({ error: response.data.message || "Failed to create playlist", loading: false });
         return false;
       }
-    } catch (error) {
-      set({ 
-        error: error.response?.data?.message || "An error occurred while creating playlist", 
-        loading: false 
-      });
+    } catch (error: any) {
+        set({ 
+          error: error.response?.data?.message || "An error occurred while creating playlist", 
+          loading: false 
+        });
       return false;
     }
   },
@@ -198,11 +198,11 @@ export const usePlaylistStore = create<PlaylistStore>((set, get) => ({
         set({ error: response.data.message || "Failed to delete playlist", loading: false });
         return false;
       }
-    } catch (error) {
-      set({ 
-        error: error.response?.data?.message || "An error occurred while deleting playlist", 
-        loading: false 
-      });
+    } catch (error: any) {
+        set({ 
+          error: error.response?.data?.message || "An error occurred while deleting playlist", 
+          loading: false 
+        });
       return false;
     }
   },

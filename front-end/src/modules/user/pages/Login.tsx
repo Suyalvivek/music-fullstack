@@ -19,7 +19,6 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const Login = () => {
   const [message, setMessage] = useState("");
-  const [status, setStatus] = useState(false);
   const navigate = useNavigate();
 
   const {
@@ -43,15 +42,12 @@ const Login = () => {
         // Use the store's login function instead of directly setting localStorage
         login(result.data.role, result.data.token);
         setMessage(result.data.message);
-        setStatus(false);
         // Redirect to home page after successful login
         navigate("/home");
       } else {
         setMessage(result.data.message);
-        setStatus(true);
       }
     } catch (error: any) {
-      setStatus(true);
       setMessage(error.response?.data?.message || 'Login failed. Please try again.');
     }
   };

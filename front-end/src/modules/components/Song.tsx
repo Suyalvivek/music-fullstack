@@ -48,6 +48,15 @@ const Song = ({ song }: { song: SongType }) => {
   };
 
   const handleAddSongToPlaylist = async (playlistId: string) => {
+    if (!song._id) {
+      toast({
+        title: "Error",
+        description: "Invalid song data",
+        variant: "destructive"
+      });
+      return;
+    }
+    
     const success = await addSongToPlaylist(playlistId, song._id);
     
     if (success) {

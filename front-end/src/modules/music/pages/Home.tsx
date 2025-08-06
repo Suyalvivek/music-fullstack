@@ -70,11 +70,18 @@ const Home = () => {
             initial="hidden"
             animate="visible"
           >
-            {songs.map((song, index) => (
-              <motion.div key={song._id || index} variants={itemVariants}>
-                <Song song={song} />
-              </motion.div>
-            ))}
+            {songs.map((song, index) => {
+              // Ensure song has all required properties
+              if (!song || !song.title || !song.desc || !song.image || !song.audiourl) {
+                console.warn('Skipping invalid song:', song);
+                return null;
+              }
+              return (
+                <motion.div key={song._id || `song-${index}`} variants={itemVariants}>
+                  <Song song={song} />
+                </motion.div>
+              );
+            })}
           </motion.div>
         )}
       </div>

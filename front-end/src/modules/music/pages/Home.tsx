@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useMusic } from '../store/music-store';
 import Song from '@/modules/components/Song';
 import { motion } from 'framer-motion';
@@ -34,7 +34,7 @@ const Home = () => {
       y: 0,
       opacity: 1,
       transition: {
-        type: 'spring',
+        type: "spring" as const,
         stiffness: 100,
         damping: 12
       }

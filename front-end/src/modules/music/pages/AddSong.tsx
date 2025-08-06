@@ -15,7 +15,7 @@ const AddSong = () => {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { },
       } = useForm({
         defaultValues: {
           title: "",

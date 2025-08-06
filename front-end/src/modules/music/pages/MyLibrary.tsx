@@ -14,13 +14,7 @@ type Song = {
   audiourl: string;
 };
 
-type Playlist = {
-  _id: string;
-  name: string;
-  userId: string;
-  songs: (Song | string)[];
-  createdAt: string;
-};
+// Playlist type is used in the component
 
 const MyLibrary = () => {
   const { playlists, currentPlaylist, fetchPlaylists, fetchPlaylistDetails, deleteUserPlaylist, removeSongFromPlaylist, createNewPlaylist, loading, error } = usePlaylistStore();

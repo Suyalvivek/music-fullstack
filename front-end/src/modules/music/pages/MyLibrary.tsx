@@ -6,15 +6,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { useToast } from '@/components/ui/use-toast';
 import { Trash2, Play, Plus } from 'lucide-react';
 
-type Song = {
-  _id: string;
-  title: string;
-  desc: string;
-  image: string;
-  audiourl: string;
-};
-
-// Playlist type is used in the component
 
 const MyLibrary = () => {
   const { playlists, currentPlaylist, fetchPlaylists, fetchPlaylistDetails, deleteUserPlaylist, removeSongFromPlaylist, createNewPlaylist, loading, error } = usePlaylistStore();
